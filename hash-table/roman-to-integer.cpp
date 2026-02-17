@@ -6,8 +6,9 @@ public:
         const char* str1 = "I";
         for (int i = 0; i < count; i++)
         {
-            if (s.at(i) == str1)
+            if (&s.at(i) == str1)
                 result +=1;
         }
+        return result;
     }
 };
