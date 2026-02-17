@@ -6,7 +6,7 @@ public:
         const char* str1 = "I";
         for (int i = 0; i < count; i++)
         {
-            if (strcmp(const char* s.at(i), const char* str1) == 0)
+            if (strcmp(s.at(i), str1) == 0)
                 result +=1;
         }
     }
