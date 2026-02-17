@@ -14,12 +14,12 @@ public:
         {
             if (s.at(i) == str1)
             {
-                if (i < count && s.at(i) == str2)
+                if (i < count && s.at(i + 1) == str2)
                 {
                     result += 4;
                     i++;
                 }
-                else if (i < count && s.at(i) == str3)
+                else if (i < count && s.at(i + 1) == str3)
                 {
                     result += 9;
                     i++;
@@ -31,12 +31,12 @@ public:
                 result += 5;
             else if (s.at(i) == str3)
             {
-                if (i < count && s.at(i) == str4)
+                if (i < count && s.at(i + 1) == str4)
                 {
                     result += 40;
                     i++;
                 }
-                else if (i < count && s.at(i) == str5)
+                else if (i < count && s.at(i + 1) == str5)
                 {
                     result += 90;
                     i++;
@@ -48,12 +48,12 @@ public:
                 result += 50;
             else if (s.at(i) == str5)
             {
-                if (i < count && s.at(i) == str6)
+                if (i < count && s.at(i + 1) == str6)
                 {
                     result += 400;
                     i++;
                 }
-                else if (i < count && s.at(i) == str7)
+                else if (i < count && s.at(i + 1) == str7)
                 {
                     result += 900;
                     i++;
