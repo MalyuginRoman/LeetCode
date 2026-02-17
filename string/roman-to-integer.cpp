@@ -13,15 +13,54 @@ public:
         for (int i = 0; i < count; i++)
         {
             if (s.at(i) == str1)
-                result += 1;
+            {
+                if (i < count && s.at(i) == str2)
+                {
+                    result += 4;
+                    i++;
+                }
+                else if (i < count && s.at(i) == str3)
+                {
+                    result += 9;
+                    i++;
+                }
+                else
+                    result += 1;
+            }
             if (s.at(i) == str2)
                 result += 5;
             if (s.at(i) == str3)
-                result += 10;
+            {
+                if (i < count && s.at(i) == str4)
+                {
+                    result += 40;
+                    i++;
+                }
+                else if (i < count && s.at(i) == str5)
+                {
+                    result += 90;
+                    i++;
+                }
+                else
+                    result += 10;
+            }
             if (s.at(i) == str4)
                 result += 50;
             if (s.at(i) == str5)
-                result += 100;
+            {
+                if (i < count && s.at(i) == str6)
+                {
+                    result += 400;
+                    i++;
+                }
+                else if (i < count && s.at(i) == str7)
+                {
+                    result += 900;
+                    i++;
+                }
+                else
+                    result += 100;
+            }
             if (s.at(i) == str6)
                 result += 500;
             if (s.at(i) == str7)
