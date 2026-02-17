@@ -27,9 +27,9 @@ public:
                 else
                     result += 1;
             }
-            if (s.at(i) == str2)
+            else if (s.at(i) == str2)
                 result += 5;
-            if (s.at(i) == str3)
+            else if (s.at(i) == str3)
             {
                 if (i < count && s.at(i) == str4)
                 {
@@ -44,9 +44,9 @@ public:
                 else
                     result += 10;
             }
-            if (s.at(i) == str4)
+            else if (s.at(i) == str4)
                 result += 50;
-            if (s.at(i) == str5)
+            else if (s.at(i) == str5)
             {
                 if (i < count && s.at(i) == str6)
                 {
@@ -61,9 +61,9 @@ public:
                 else
                     result += 100;
             }
-            if (s.at(i) == str6)
+            else if (s.at(i) == str6)
                 result += 500;
-            if (s.at(i) == str7)
+            else if (s.at(i) == str7)
                 result += 1000;
         }
         return result;
