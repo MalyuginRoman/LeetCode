@@ -20,7 +20,7 @@ public:
                 return result[i];
             if (target < 0)
             {
-                if (result[i] < 0 && (target - result[i]) < (target - answer)) answer = result[i];
+                if (result[i] < 0 && abs(target - result[i]) < abs(target - answer)) answer = result[i];
                 else if (result[i] > 0 && (target + result[i]) < answer) answer = result[i];
             }
             else if (target == 0)
