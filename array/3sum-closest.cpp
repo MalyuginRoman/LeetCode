@@ -25,7 +25,7 @@ public:
             }
             else if (target == 0)
             {
-                if (abs(result[i]) < answer) answer = result[i];
+                if (abs(result[i]) < abs(answer)) answer = result[i];
             }
             else if (target > 0)
             {
