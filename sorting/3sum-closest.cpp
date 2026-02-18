@@ -18,13 +18,19 @@ public:
         {
             if (result[i] == target)
                 return result[i];
-            else if (target < 0)
+            if (target < 0)
+            {
                 if (result[i] < 0 && (target - result[i]) < answer) answer = result[i];
                 else if (result[i] > 0 && (target + result[i]) < answer) answer = result[i];
-            else if (target = 0)
+            }
+            else if (target == 0)
+            {
                 if (abs(result[i]) < answer) answer = result[i];
+            }
             else if (target > 0)
+            {
                 if (abs(target - result[i]) < answer) answer = result[i];
+            }
         }
         return answer;
     }
