@@ -17,10 +17,7 @@ public:
         for (int i = 1; i < result.size(); i++)
         {
             if (result[i] == target)
-            {
-                answer = result[i];
-                return answer;
-            }
+                return result[i];
             else if (target < 0)
                 if (result[i] < 0 && (target - result[i]) < answer) answer = result[i];
                 else if (result[i] > 0 && (target + result[i]) < answer) answer = result[i];
