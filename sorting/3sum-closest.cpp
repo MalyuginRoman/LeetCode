@@ -18,7 +18,7 @@ public:
         {
             if (answer == target)
             {
-                answer = result[i];
+                target = result[i];
                 return answer;
             }
             else if (target < 0)
