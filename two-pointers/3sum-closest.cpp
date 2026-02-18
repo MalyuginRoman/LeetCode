@@ -14,7 +14,7 @@ public:
             }
         }
         int answer = result[0];
-        for (int i = 1; i < result.size(); i++)
+        for (int i = 0; i < result.size(); i++)
         {
             if (result[i] == target)
                 return result[i];
