@@ -22,18 +22,11 @@ public:
                 return answer;
             }
             else if (target < 0)
-            {
-                if (/*(result[i] < target) && (target - result[i]) < answer) answer = result[i];
-                else if ((result[i] > target) &&*/ (result[i] - target) < answer) answer = result[i];
-            }
+                if ((target - result[i]) < answer) answer = result[i];
             else if (target = 0)
-            {
                 if (abs(result[i]) < answer) answer = result[i];
-            }
             else if (target > 0)
-            {
                 if (abs(target - result[i]) < answer) answer = result[i];
-            }
         }
         return answer;
     }
