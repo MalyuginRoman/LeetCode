@@ -9,7 +9,7 @@ public:
                 for (int k = j + 1; k < nums.size(); k++)
                 {
                     int sum = nums[i] + nums[j] + nums[k];
-                    result.push_back(sum);
+                    result.emplace_back(sum);
                 }
             }
         }
