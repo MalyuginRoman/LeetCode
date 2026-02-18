@@ -21,11 +21,11 @@ public:
                 answer = result[i];
                 return answer;
             }
-            /*else if (target < 0)
-                if ((target - result[i]) < answer) answer = result[i];*/
+            else if (target < 0)
+                if ((target - result[i]) > answer) answer = result[i];
             else if (target = 0)
                 if (abs(result[i]) < answer) answer = result[i];
-            else /*if (target > 0)*/
+            else if (target > 0)
                 if (abs(target - result[i]) < answer) answer = result[i];
         }
         return answer;
