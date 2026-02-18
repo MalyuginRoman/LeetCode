@@ -29,7 +29,7 @@ public:
             }
             else if (target > 0)
             {
-                if (abs(target - result[i]) < (target - answer)) answer = result[i];
+                if (abs(target - result[i]) < abs(target - answer)) answer = result[i];
             }
         }
         return answer;
