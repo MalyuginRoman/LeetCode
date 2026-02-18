@@ -16,16 +16,16 @@ public:
         int answer = result[0];
         for (int i = 1; i < result.size(); i++)
         {
-            if (answer == target)
+            if (result[i] == target)
             {
-                target = result[i];
+                answer = result[i];
                 return answer;
             }
-            else if (target < 0)
-                if ((target - result[i]) < answer) answer = result[i];
+            /*else if (target < 0)
+                if ((target - result[i]) < answer) answer = result[i];*/
             else if (target = 0)
                 if (abs(result[i]) < answer) answer = result[i];
-            else if (target > 0)
+            else /*if (target > 0)*/
                 if (abs(target - result[i]) < answer) answer = result[i];
         }
         return answer;
