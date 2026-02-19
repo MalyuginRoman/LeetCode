@@ -18,7 +18,7 @@ public:
             {
                 if (i == 1 && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
                 {
-                    //flowerbed[i - 1] = 1;
+                    flowerbed[i - 1] = 1;
                     current += 1;
                     //i += 1;
                     if (current == n)
@@ -29,7 +29,7 @@ public:
                 }
                 else if (i == (count - 1) && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
                 {
-                    //flowerbed[count - 1] = 1;
+                    flowerbed[count - 1] = 1;
                     current += 1;
                     i += 1;
                     if (current == n)
@@ -40,7 +40,7 @@ public:
                 }
                 else if (flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
                 {
-                    //flowerbed[i] = 1;
+                    flowerbed[i] = 1;
                     current += 1;
                     i += 1;
                     if (current == n)
