@@ -16,7 +16,7 @@ public:
         }
         for (int i = 1; i < count; i++)
             {
-                if (i == 1 && flowerbed[i - 1] == 0)
+                if (i == 1 && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
                 {
                     //flowerbed[i] = 1;
                     current += 1;
@@ -27,7 +27,7 @@ public:
                         return result;
                     }
                 }
-                else if (i == (count - 2) && flowerbed[i + 1] == 0)
+                else if (i == (count - 2) && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
                 {
                     //flowerbed[count - 1] = 1;
                     current += 1;
