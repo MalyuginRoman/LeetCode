@@ -9,6 +9,11 @@ public:
             result = true;
             return result;
         }
+        if (n == 1 && count == 0 && flowerbed[0] == 0)
+        {
+            result = true;
+            return result;
+        }
         for (int i = 1; i < count; i++)
             {
                 if (i == 1 && flowerbed[i - 1] == 0)
