@@ -18,9 +18,9 @@ public:
             {
                 if (i == 1 && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
                 {
-                    flowerbed[i] = 1;
+                    flowerbed[i - 1] = 1;
                     current += 1;
-                    i += 1;
+                    //i += 1;
                     if (current == n)
                     {
                         result = true;
