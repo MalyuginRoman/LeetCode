@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+    bool canPlaceFlowers(std::vector<int>& flowerbed, int n) {
         int count = flowerbed.size();
         bool result = false;
         int current = 0;
@@ -13,6 +13,7 @@ public:
             {
                 if (i == 1 && flowerbed[i - 1] == 0)
                 {
+                    //flowerbed[i] = 1;
                     current += 1;
                     i += 1;
                     if (current == n)
@@ -21,8 +22,9 @@ public:
                         return result;
                     }
                 }
-                else if (i == (count - 1) && flowerbed[i + 1] == 0)
+                else if (i == (count - 2) && flowerbed[i + 1] == 0)
                 {
+                    //flowerbed[count - 1] = 1;
                     current += 1;
                     i += 1;
                     if (current == n)
@@ -33,6 +35,7 @@ public:
                 }
                 else if (flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
                 {
+                    //flowerbed[i] = 1;
                     current += 1;
                     i += 1;
                     if (current == n)
