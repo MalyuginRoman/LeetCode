@@ -21,7 +21,7 @@ public:
                         return result;
                     }
                 }
-                else if (flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
+                else if (i == (count - 1) && flowerbed[i + 1] == 0)
                 {
                     current += 1;
                     i += 1;
@@ -31,7 +31,7 @@ public:
                         return result;
                     }
                 }
-                else if (i == (count - 1) && flowerbed[i + 1] == 0)
+                else if (flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
                 {
                     current += 1;
                     i += 1;
