@@ -2,62 +2,40 @@ class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
         int count = flowerbed.size();
-        int need = 2 * n + 1;
         bool result = false;
         int current = 0;
-        if (flowerbed[0] == 0)
-        {
-            for (int i = 0; i < count; i++)
+        for (int i = 1; i < (count - 1); i++)
             {
-                if (flowerbed[i] ==0)
+                if (i == 1 && flowerbed[i - 1] == 0)
                 {
                     current += 1;
-                    if (current == (need - 1))
+                    i += 1;
+                    if (current == n)
                     {
                         result = true;
                         return result;
                     }
                 }
-                else
-                {
-                    current = 0;
-                    break;
-                }
-            }
-        }
-        if (flowerbed[count] == 0)
-        {
-            for (int i = count; i > count; --i)
-            {
-                if (flowerbed[i] ==0)
+                else if (flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0)
                 {
                     current += 1;
-                    if (current == (need - 1))
+                    i += 1;
+                    if (current == n)
                     {
                         result = true;
                         return result;
                     }
                 }
-                else
-                {
-                    current = 0;
-                    break;
-                }
-            }
-        }
-        for (int i = 0; i < count; i++)
-            {
-                if (flowerbed[i] == 0)
+                else if (i == (count - 1) && flowerbed[i + 1] == 0)
                 {
                     current += 1;
-                    if (current == need)
+                    i += 1;
+                    if (current == n)
                     {
                         result = true;
                         return result;
                     }
                 }
-                else
-                    current = 0;
             }
         return result;
     }
