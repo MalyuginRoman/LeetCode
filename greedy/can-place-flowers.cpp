@@ -9,7 +9,7 @@ public:
             result = true;
             return result;
         }
-        if (n == 1 && count == 0 && flowerbed[0] == 0)
+        if (n == 1 && count == 1 && flowerbed[0] == 0)
         {
             result = true;
             return result;
