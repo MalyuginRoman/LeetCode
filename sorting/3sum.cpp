@@ -5,11 +5,11 @@ public:
         std::vector<std::vector<int>> result;
         bool isWrite = false;
         sort(nums.begin(), nums.end());
-        for (int i = 0; i < nums.size(); i++)
+        for (size_t i = 0; i < nums.size(); i++)
         {
-            for (int j = i + 1; j < nums.size(); j++)
+            for (size_t j = i + 1; j < nums.size(); j++)
             {
-                for (int k = j + 1; k < nums.size(); k++)
+                for (size_t k = j + 1; k < nums.size(); k++)
                 {
                     if ((nums[i] + nums[j] + nums[k]) == 0)
                     {
@@ -17,7 +17,7 @@ public:
                             result.push_back({nums[i],nums[j],nums[k]});
                         else
                         {
-                            for (int n = 0; n < result.size(); n++)
+                            for (size_t n = 0; n < result.size(); n++)
                             {
                                 if (nums[i] == result[n][0] &&
                                     nums[j] == result[n][1] &&
