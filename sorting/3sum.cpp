@@ -10,10 +10,10 @@ public:
             if(i > 0 && nums[i] == nums[i-1]) continue;
             for (size_t j = i + 1; j < nums.size(); j++)
             {
-                if(i > 0 && nums[j] == nums[j-1]) continue;
+                if(j > (i + 2) && nums[j] == nums[j-1]) continue;
                 for (size_t k = j + 1; k < nums.size(); k++)
                 {
-                    if(i > 0 && nums[k] == nums[k-1]) continue;
+                    if(k > (j + 2) && nums[k] == nums[k-1]) continue;
                     if ((nums[i] + nums[j] + nums[k]) == 0)
                     {
                         if (result.size() == 0)
