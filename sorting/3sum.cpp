@@ -3,6 +3,7 @@ class Solution {
 public:
     std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
         std::vector<std::vector<int>> result;
+        bool isWrite = false;
         sort(nums.begin(), nums.end());
         for (int i = 0; i < nums.size(); i++)
         {
@@ -17,11 +18,16 @@ public:
                         else
                         {
                             int last = result.size()-1;
-                            if (nums[i] == result[last][0] &&
-                                nums[j] == result[last][1] &&
-                                nums[k] == result[last][2])
-                                    break;
-                            else
+                            for (int n = 0; n < last; n++)
+                            {
+                                if (nums[i] == result[last][0] &&
+                                    nums[j] == result[last][1] &&
+                                    nums[k] == result[last][2])
+                                        isWrite = true;
+                                else
+                                        isWrite = false;
+                            }
+                            if (!isWrite)
                                 result.push_back({nums[i],nums[j],nums[k]});
                         }
                     }
