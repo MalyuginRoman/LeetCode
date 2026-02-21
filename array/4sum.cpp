@@ -11,7 +11,7 @@ public:
                 int r=n-1;
                 long long sum=target-nums[i]-nums[j];
                 while(l<r) {
-                    int total=nums[l]+nums[r];
+                    long long total=nums[l]+nums[r];
                     if(total==sum) {
                         if (ans.size() == 0)
                             ans.push_back({nums[i],nums[j],nums[l],nums[r]});
