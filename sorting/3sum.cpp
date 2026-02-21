@@ -22,7 +22,10 @@ public:
                                 if (nums[i] == result[n][0] &&
                                     nums[j] == result[n][1] &&
                                     nums[k] == result[n][2])
+                                    {
                                         isWrite = true;
+                                        break;
+                                    }
                                 else
                                         isWrite = false;
                             }
