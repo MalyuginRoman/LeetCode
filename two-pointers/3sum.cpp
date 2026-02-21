@@ -17,12 +17,11 @@ public:
                             result.push_back({nums[i],nums[j],nums[k]});
                         else
                         {
-                            int last = result.size()-1;
-                            for (int n = 0; n < last; n++)
+                            for (int n = 0; n < result.size(); n++)
                             {
-                                if (nums[i] == result[last][0] &&
-                                    nums[j] == result[last][1] &&
-                                    nums[k] == result[last][2])
+                                if (nums[i] == result[n][0] &&
+                                    nums[j] == result[n][1] &&
+                                    nums[k] == result[n][2])
                                         isWrite = true;
                                 else
                                         isWrite = false;
