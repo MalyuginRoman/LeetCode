@@ -27,9 +27,6 @@ public:
                                 }
                 }
             }
-        }
-        for (int i = 0; i < a1.size(); i++)
-        {
             for (int j = 0; j < a2.size(); j++)
             {
                 if (j != i)
@@ -40,6 +37,8 @@ public:
                     else if (abs((a1[i] / a2[j]) - 24) < 1e-6) return true;
                 }
             }
+            a1.clear();
+            a2.clear();
         }
         return result;
     };
