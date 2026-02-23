@@ -16,9 +16,9 @@ public:
                     a1.push_back(cards[i] * cards[j]);
                     a1.push_back(cards[i] / cards[j]);
                     for (int k = 3; k >= 0; k--)
-                        if (k != i || k != j)
+                        if (k != i && k != j)
                             for (int t = 3; t >= 0; t--)
-                                if (t != i || t != j || t != k)
+                                if (t != i && t != j && t != k)
                                 {
                                     a2.push_back(cards[k] + cards[t]);
                                     a2.push_back(cards[k] - cards[t]);
