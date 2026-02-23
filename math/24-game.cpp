@@ -28,7 +28,7 @@ public:
                                     a2.push_back(cards[k] * cards[t]);
                                     if (abs(cards[t]) > 0) a2.push_back(cards[k] / cards[t]);
                                     if (abs(cards[k]) > 0) a2.push_back(cards[t] / cards[k]);
-                                    for (int l = 0; l < a2.size(); l++)
+                                    for (int l = 0; l < a1.size(); l++)
                                     {
                                         for (int m = 0; m < a2.size(); m++)
                                         {
