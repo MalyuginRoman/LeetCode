@@ -24,14 +24,14 @@ public:
                                     a2.push_back(cards[k] - cards[t]);
                                     a2.push_back(cards[k] * cards[t]);
                                     a2.push_back(cards[k] / cards[t]);
-                                    for (int j = 0; j < a2.size(); j++)
+                                    for (int l = 0; l < a2.size(); l++)
                                     {
-                                        if (j != i)
+                                        for (int m = 0; m < a2.size(); m++)
                                         {
-                                            if (abs((a1[i] + a2[j]) - 24) < 1e-6) return true;
-                                            else if (abs((a1[i] - a2[j]) - 24) < 1e-6) return true;
-                                            else if (abs((a1[i] * a2[j]) - 24) < 1e-6) return true;
-                                            else if (abs((a1[i] / a2[j]) - 24) < 1e-6) return true;
+                                            if (abs((a1[l] + a2[m]) - 24) < 1e-6) return true;
+                                            else if (abs((a1[l] - a2[m]) - 24) < 1e-6) return true;
+                                            else if (abs((a1[l] * a2[m]) - 24) < 1e-6) return true;
+                                            else if (abs((a1[l] / a2[m]) - 24) < 1e-6) return true;
                                         }
                                     }
                                     a2.clear();
