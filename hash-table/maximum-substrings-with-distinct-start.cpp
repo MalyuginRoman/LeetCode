@@ -1,14 +1,14 @@
 class Solution {
 public:
     int maxDistinct(string s) {
-        int result = 0;
+        //int result = 0;
         vector<char> lit;
         bool write = true;
-        int count = s.size();
-        for (int i = 0; i < count; i++)
+        //int count = s.size();
+        for (int i = 0; i < s.size() /*count*/; i++)
         {
-            int l_size = lit.size();
-            for (int j = 0; j < l_size; j++)
+            //int l_size = lit.size();
+            for (int j = 0; j < lit.size() /*l_size*/; j++)
             {
                 if (s[i] == lit[j])
                 {
@@ -19,8 +19,8 @@ public:
             if(write) lit.push_back(s[i]);
             write = true;
         }
-        result = lit.size();
-        return result;
+        //result = lit.size();
+        return /*result*/ lit.size();
         
     }
 };
