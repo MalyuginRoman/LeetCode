@@ -10,6 +10,16 @@ public:
             result = S1;
             return result;
         }
+        if ((ax1>bx1)&&(ay1>by1)&&(ax2>bx2)&&(ay2>by2))
+        {
+            result = S1;
+            return result;
+        }
+        if ((ax1<bx1)&&(ay1<by1)&&(ax2<bx2)&&(ay2<by2))
+        {
+            result = S2;
+            return result;
+        }
         if ((bx1<ax2)&&(bx1>ax1)&&(by2<ay2)&&(by2>ay1) && S1!=0 && S2!=0)
         {
             S3 = abs(ax2-bx1)*abs(by2-ay1);
