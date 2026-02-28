@@ -10,12 +10,12 @@ public:
             result = S1;
             return result;
         }
-        if ((ax1>bx1)&&(ay1>by1)&&(ax2>bx2)&&(ay2>by2))
+        if ((bx1<ax2)&&(bx1>ax1)&&(by1<ay2)&&(by1>ay1)&&(bx2<ax2)&&(bx2>ax1)&&(by2<ay2)&&(by2>ay1))
         {
             result = S1;
             return result;
         }
-        if ((ax1<bx1)&&(ay1<by1)&&(ax2<bx2)&&(ay2<by2))
+        if ((ax1<bx2)&&(ax1>bx1)&&(ay1<by2)&&(ay1>by1)&&(ax2<bx2)&&(ax2>bx1)&&(ay2<by2)&&(ay2>by1))
         {
             result = S2;
             return result;
