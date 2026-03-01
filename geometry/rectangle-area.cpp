@@ -28,7 +28,7 @@ public:
             (by2 >/*=*/ ay1 && by2 </*=*/ ay2) && (by1 >/*=*/ ay1 && by1 </*=*/ ay2) && S1 != 0 && S2 != 0) {
             S2 = 0;
             S3 = 0; }
-        else if (ax1 = bx1 && ay1 = by1 && ax2 = bx2 && ay2 = by2 && S1 != 0 && S2 != 0) {
+        else if (ax1 == bx1 && ay1 == by1 && ax2 == bx2 && ay2 == by2 && S1 != 0 && S2 != 0) {
             S2 = 0;
             S3 = 0; }
         result = S1 + S2 - S3;
