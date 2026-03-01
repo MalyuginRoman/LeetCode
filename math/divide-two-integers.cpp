@@ -19,7 +19,7 @@ public:
                 val -= divisor;
             }
         else if (dividend < 0 && divisor > 0)
-            while (val > (dividend + divisor)) {
+            while (val > (dividend /*+ divisor*/)) {
                 result -= 1;
                 val -= divisor;
             }
