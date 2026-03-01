@@ -5,10 +5,6 @@ public:
         int S1 = abs(ax2-ax1)*abs(ay2-ay1);
         int S2 = abs(bx2-bx1)*abs(by2-by1);
         int S3 = 0;
-        bool b1 = ay1 < by1;
-        bool b2 = ay2 > by2;
-        bool b3 = (ax1 > bx1 && ax1 < bx2);
-        bool b4 = (ax2 > bx2);
         if (ax1 == bx1 && ay1 == by1 && ax2 == bx2 && ay2 == by2 &&    //equal
             S1 != 0 && S2 != 0) {
             S2 = 0;
@@ -16,7 +12,7 @@ public:
         if (ax1 < bx1 && ay1 > by1 && ax2 > bx2 && ay2 < by2 &&    //X1
             S1 != 0 && S2 != 0)
             S3 = abs(bx2-bx1)*abs(ay2-ay1);
-        if (ax1 > bx1 && ay1 < by1 && ax2 < bx2 && ay2 > by2 &&    //X2
+        else if (ax1 > bx1 && ay1 < by1 && ax2 < bx2 && ay2 > by2 &&    //X2
             S1 != 0 && S2 != 0)
             S3 = abs(ax2-ax1)*abs(by2-by1);
         else if ((ax2 >= bx1 && ax2 <= bx2) && (ax1 >= bx1 && ax1 <= bx2) &&    //in1
@@ -34,7 +30,7 @@ public:
             (ay2 > by2) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-ax1)*abs(ay1-by2);
         else if (ax1 < bx1 && ax2 > bx2 && (ay1 >= by1 && ay1 <= by2) &&      // v3
-            (ay2 < by2) && S1 != 0 && S2 != 0)
+            (ay2 < by2 && ay2 < by1) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-bx1)*abs(ay2-by1);
         else if (ay1 <= by1 && ay2 >= by2 && (bx1 > ax1 && bx1 < ax2) &&      // r1
             (ax1 < bx1) && S1 != 0 && S2 != 0)
