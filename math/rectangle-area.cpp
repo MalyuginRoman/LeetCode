@@ -14,24 +14,31 @@ public:
         else if ((ax1 > bx1 && ax1 < bx2) && (by1 > ay1 && by1 < ay2) &&    // nr
             (bx1 < ax1) && (by2 > ay2) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-ax1)*abs(ay2-by1);
-        else if ((ax1 > bx1 && ax1 < bx2) && (ay1 > by1 && ay1 < by2) &&    //vr
+        else if ((ax1 > bx1 && ax1 < bx2) && (ay1 > by1 && ay1 < by2) &&    // vr
             (bx2 < ax2) && (by1 < ay1) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-ax1)*abs(ay1-by2);
-        else if (ax1 < bx1 && ax2 > bx2 && (ay1 > by1 && ay1 < by2) &&      //v1
+        else if (ax1 < bx1 && ax2 > bx2 && (ay1 > by1 && ay1 < by2) &&      // v1
             S1 != 0 && S2 != 0)
             S3 = abs(bx2-bx1)*abs(ay1-by2);
-        else if (bx1 < ax1 && bx2 > ax2 && (ay1 > by1 && ay1 < by2) &&      //v2
+        else if (bx1 < ax1 && bx2 > ax2 && (ay1 > by1 && ay1 < by2) &&      // v2
             S1 != 0 && S2 != 0)
             S3 = abs(ax2-ax1)*abs(ay1-by2);
-        else if ((ax2 > bx1 && ax2 < bx2) && (ax1 > bx1 && ax1 < bx2) &&
+        else if (ay1 < by1 && ay2 > by2 && (bx1 > ax1 && bx1 < ax2) &&      // r1
+            S1 != 0 && S2 != 0)
+            S3 = abs(ax2-bx1)*abs(by2-by1);
+        else if (ay1 > by1 && ay2 < by2 && (bx1 > ax1 && bx1 < ax2) &&      // r2
+            S1 != 0 && S2 != 0)
+            S3 = abs(ax2-bx1)*abs(ay2-ay1);
+        else if ((ax2 > bx1 && ax2 < bx2) && (ax1 > bx1 && ax1 < bx2) &&    //in1
             (ay2 > by1 && ay2 < by2) && (ay1 > by1 && ay1 < by2) && S1 != 0 && S2 != 0) {
             S1 = 0;
             S3 = 0; }
-        else if ((bx2 > ax1 && bx2 < ax2) && (bx1 > ax1 && bx1 < ax2) &&
+        else if ((bx2 > ax1 && bx2 < ax2) && (bx1 > ax1 && bx1 < ax2) &&    //in2
             (by2 > ay1 && by2 < ay2) && (by1 > ay1 && by1 < ay2) && S1 != 0 && S2 != 0) {
             S2 = 0;
             S3 = 0; }
-        else if (ax1 == bx1 && ay1 == by1 && ax2 == bx2 && ay2 == by2 && S1 != 0 && S2 != 0) {
+        else if (ax1 == bx1 && ay1 == by1 && ax2 == bx2 && ay2 == by2 &&    //equal
+            S1 != 0 && S2 != 0) {
             S2 = 0;
             S3 = 0; }
         result = S1 + S2 - S3;
