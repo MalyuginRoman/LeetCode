@@ -27,6 +27,9 @@ public:
         else if (bx1 <= ax1 && bx2 >= ax2 && (ay1 > by1 && ay1 < by2) &&      // v2
             (ay2 > by2) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-ax1)*abs(ay1-by2);
+        else if (ax1 < bx1 && ax2 > bx2 && (ay1 >= by1 && ay1 <= by2) &&      // v3
+            (ay2 < by2) && S1 != 0 && S2 != 0)
+            S3 = abs(bx2-bx1)*abs(ay2-by1);
         else if (ay1 <= by1 && ay2 >= by2 && (bx1 > ax1 && bx1 < ax2) &&      // r1
             (ax1 < bx1) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-bx1)*abs(by2-by1);
