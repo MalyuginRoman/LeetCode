@@ -1,7 +1,27 @@
 class Solution {
 public:
     int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {
-        int result = 0;
+        // Area of first rectangle
+        int area1 = (ax2 - ax1) * (ay2 - ay1);
+        // Area of second rectangle
+        int area2 = (bx2 - bx1) * (by2 - by1);
+
+        // Calculating intersecting area
+        int bottomLeftX = max(ax1, bx1);
+        int bottomLeftY = max(ay1, by1);
+
+        int topRightX = min(ax2, bx2);
+        int topRightY = min(ay2, by2);
+
+        int width = topRightX - bottomLeftX;
+        int height = topRightY - bottomLeftY;
+        int intersectingArea = height * width;
+
+        if(width <= 0 || height <= 0)
+            intersectingArea = 0;
+
+        return area1 + area2 - intersectingArea;
+        /*int result = 0;
         int S1 = abs(ax2-ax1)*abs(ay2-ay1);
         int S2 = abs(bx2-bx1)*abs(by2-by1);
         int S3 = 0;
@@ -63,6 +83,6 @@ public:
             (bx2 < ax2) && (by1 < ay1) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-ax1)*abs(ay1-by2);
         result = S1 + S2 - S3;
-        return result;
+        return result;*/
     }
 };
