@@ -13,8 +13,13 @@ public:
                 result += 1;
                 val += divisor;
             }
-        else if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0))
+        else if (dividend > 0 && divisor < 0)
             while (val < (dividend + divisor)) {
+                result -= 1;
+                val -= divisor;
+            }
+        else if (dividend < 0 && divisor > 0)
+            while (val > (dividend + divisor)) {
                 result -= 1;
                 val -= divisor;
             }
