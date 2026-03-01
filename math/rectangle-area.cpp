@@ -5,27 +5,27 @@ public:
         int S1 = abs(ax2-ax1)*abs(ay2-ay1);
         int S2 = abs(bx2-bx1)*abs(by2-by1);
         int S3 = 0;
-        if ((ax2 >= bx1 && ax2 <= bx2) && (by2 >= ay1 && by2 <= ay2) &&
+        if ((ax2 >/*=*/ bx1 && ax2 </*=*/ bx2) && (by2 >/*=*/ ay1 && by2 </*=*/ ay2) &&
             (bx2 > ax2) && (by1 < ay1) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-bx1)*abs(by2-ay1);
-        else if ((ax2 >= bx1 && ax2 <= bx2) && (by1 >= ay1 && by1 <= ay2) &&
+        else if ((ax2 >/*=*/ bx1 && ax2 </*=*/ bx2) && (by1 >/*=*/ ay1 && by1 </*=*/ ay2) &&
             (bx2 > ax2) && (by2 > ay2) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-bx1)*abs(ay2-by1);
-        else if ((ax1 >= bx1 && ax1 <= bx2) && (by1 >= ay1 && by1 <= ay2) &&
+        else if ((ax1 >/*=*/ bx1 && ax1 </*=*/ bx2) && (by1 >/*=*/ ay1 && by1 </*=*/ ay2) &&
             (by2 > ay2) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-ax1)*abs(ay2-by1);
-        else if ((ax1 >= bx1 && ax1 <= bx2) && (ay1 >= by1 && ay1 <= by2) &&
+        else if ((ax1 >/*=*/ bx1 && ax1 </*=*/ bx2) && (ay1 >/*=*/ by1 && ay1 </*=*/ by2) &&
             (by1 < ay1) && S1 != 0 && S2 != 0)
             S3 = abs(bx2-ax1)*abs(ay1-by2);
-        else if (ax1 <= bx1 && ax2 <= bx2 && (ay1 >= by1 && ay1 <= by2) &&
-            (ay2 >= by2) && S1 != 0 && S2 != 0)
+        else if (ax1 </*=*/ bx1 && ax2 </*=*/ bx2 && (ay1 >/*=*/ by1 && ay1 </*=*/ by2) &&
+            (ay2 >/*=*/ by2) && S1 != 0 && S2 != 0)
             S3 = abs(ax2-ax1)*abs(ay1-by2);
-        else if ((ax2 >= bx1 && ax2 <= bx2) && (ax1 >= bx1 && ax1 <= bx2) &&
-            (ay2 >= by1 && ay2 <= by2) && (ay1 >= by1 && ay1 <= by2) && S1 != 0 && S2 != 0) {
+        else if ((ax2 >/*=*/ bx1 && ax2 </*=*/ bx2) && (ax1 >/*=*/ bx1 && ax1 </*=*/ bx2) &&
+            (ay2 >/*=*/ by1 && ay2 </*=*/ by2) && (ay1 >/*=*/ by1 && ay1 </*=*/ by2) && S1 != 0 && S2 != 0) {
             S1 = 0;
             S3 = 0; }
-        else if ((bx2 >= ax1 && bx2 <= ax2) && (bx1 >= ax1 && bx1 <= ax2) &&
-            (by2 >= ay1 && by2 <= ay2) && (by1 >= ay1 && by1 <= ay2) && S1 != 0 && S2 != 0) {
+        else if ((bx2 >/*=*/ ax1 && bx2 </*=*/ ax2) && (bx1 >/*=*/ ax1 && bx1 </*=*/ ax2) &&
+            (by2 >/*=*/ ay1 && by2 </*=*/ ay2) && (by1 >/*=*/ ay1 && by1 </*=*/ ay2) && S1 != 0 && S2 != 0) {
             S2 = 0;
             S3 = 0; }
         result = S1 + S2 - S3;
