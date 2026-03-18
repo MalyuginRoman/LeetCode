@@ -5,12 +5,12 @@ public:
         if (x == 1) return result;
         if (n > 0)
         {
-            for (int i = 0; i < n; i++)
+            for (long int i = 0; i < n; i++)
                 result *= x;
         }
         else if (n < 0)
         {
-            for (int i = 0; i < abs(n); i++)
+            for (long int i = 0; i < abs(n); i++)
                 result *= x;
             result = 1/result;
         }
