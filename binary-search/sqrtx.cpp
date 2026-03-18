@@ -1,28 +1,21 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        if (x == 0) return 0;
-        int result = 1;
-        unsigned long int val = 10E+8;
-        bool isOk = false;
-        bool reev = false;
-        while (!isOk)
-        {
-            unsigned long int current = val * val;
-            if (current >= x && !reev)
-            {
-                result = val;
-                val /= 10;
-            }
-            else if (current <= x)
-            {
-                result = val;
-                val += 1;
-                reev = true;
-            }
-            else if (current > x && reev)
-                isOk = true;
+        int odd = 1, n = 0;
+
+        // itrate till x becomes 0 or negative
+        while (x > 0) {
+            x -= odd;
+            odd += 2; // next odd number on each iteration, odd = 1, 3, 5,...
+            n++;
         }
-        return result;
+
+        // if x is a perfect suare then subtracting n odd numbers would result in 0
+        if (x == 0) {
+            return n;
+        }
+
+        // if x is not a perfect square then 
+        return n - 1;
     }
 };
