@@ -1,6 +1,7 @@
 class Solution {
 public:
     int mySqrt(int x) {
+        if (x == 0) return 0;
         int result = 1;
         unsigned long int val = 10E+8;
         bool isOk = false;
