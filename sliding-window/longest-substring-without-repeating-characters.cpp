@@ -3,6 +3,7 @@ public:
     int lengthOfLongestSubstring(std::string s) {
         std::string a1 = "";
         std::string a2 = "";
+        std::string a3 = "";
         int result = 0;
         int count = s.size();
         if (count == 0) return result;
@@ -26,14 +27,11 @@ public:
                     {
                         if (a1.size() > a2.size())
                             a2 = a1;
-                        //{
+                        a3 = a1;
                         a1 = "";
                         for (int k = j + 1; k < count1; k++)
-                            a1 += a2[k];
+                            a1 += a3[k];
                         a1 += a;
-                        //}
-                        //else
-                        //    a1 = "";
                         break;
                     }
                 }
