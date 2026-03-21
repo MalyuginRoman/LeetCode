@@ -20,7 +20,7 @@ public:
         int count2 = nums2.size();
         double sum2 = 0;
         double ave2 = 0;
-        if (count1 > 0)
+        if (count2 > 0)
         {
             a++;
             if (count2 > 1)
