@@ -25,15 +25,15 @@ public:
                     else
                     {
                         if (a1.size() > a2.size())
-                        {
                             a2 = a1;
-                            a1 = "";
-                            for (int k = j + 1; k < count1; k++)
-                                a1 += a2[k];
-                            a1 += a;
-                        }
-                        else
-                            a1 = "";
+                        //{
+                        a1 = "";
+                        for (int k = j + 1; k < count1; k++)
+                            a1 += a2[k];
+                        a1 += a;
+                        //}
+                        //else
+                        //    a1 = "";
                         break;
                     }
                 }
