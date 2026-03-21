@@ -32,6 +32,8 @@ public:
                                 a1 += a2[k];
                             a1 += a;
                         }
+                        else
+                            a1 = "";
                         break;
                     }
                 }
