@@ -29,7 +29,7 @@ public:
                             a2 = a1;
                             a1 = "";
                             for (int k = j + 1; k < count1; k++)
-                                a1 = a2[k];
+                                a1 += a2[k];
                             a1 += a;
                         }
                         break;
