@@ -20,7 +20,7 @@ public:
                 {
                     value = intervals[i];
                     result.push_back(value);
-                    Write = true;
+                    Write = false;
                     reWrite = true;
                 }
                 else if (i < count && intervals[i][0] <= newInterval[1])
