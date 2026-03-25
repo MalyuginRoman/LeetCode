@@ -6,7 +6,11 @@ public:
         int count = intervals.size();
         bool reWrite;
         if (count == 0)
+        {
+            value = intervals[i];
+            result.push_back(value);
             return result;
+        }
         else
         {
             for (int i = 0; i < count; i++)
