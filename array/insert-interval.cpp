@@ -4,7 +4,7 @@ public:
         vector<vector<int>> result;
         vector<int> value;
         int count = intervals.size();
-        bool reWrite;
+        bool reWrite = false;
         if (count == 0)
         {
             value = newInterval;
@@ -19,9 +19,11 @@ public:
                 {
                     value = intervals[i];
                     result.push_back(value);
+                    reWrite = true;
                 }
                 else if (i < count && intervals[i][0] <= newInterval[1])
                 {
+                    reWrite = false;
                     while (i < count && intervals[i][0] <= newInterval[1])
                     {
                         newInterval[0] = min(newInterval[0], intervals[i][0]);
@@ -34,9 +36,15 @@ public:
                 }
                 else if (newInterval[1] < intervals[i][0])
                 {
+                    reWrite = false;
                     value = intervals[i];
                     result.push_back(value);
                 }
+            }
+            if (reWrite == true)
+            {
+                value = newInterval;
+                result.push_back(value);
             }
         }
         return result;
