@@ -41,6 +41,7 @@ public:
                 {
                     if (Write == false)
                     {
+                        Write = true;
                         value = newInterval;
                         result.push_back(value);
                     }
