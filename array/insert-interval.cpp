@@ -7,7 +7,7 @@ public:
         bool reWrite;
         if (count == 0)
         {
-            value = intervals[i];
+            value = newInterval;
             result.push_back(value);
             return result;
         }
