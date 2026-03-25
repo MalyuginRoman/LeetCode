@@ -5,6 +5,7 @@ public:
         vector<int> value;
         int count = intervals.size();
         bool reWrite = false;
+        bool Write = false;
         if (count == 0)
         {
             value = newInterval;
@@ -19,10 +20,12 @@ public:
                 {
                     value = intervals[i];
                     result.push_back(value);
+                    Write = true;
                     reWrite = true;
                 }
                 else if (i < count && intervals[i][0] <= newInterval[1])
                 {
+                    Write = true;
                     reWrite = false;
                     while (i < count && intervals[i][0] <= newInterval[1])
                     {
@@ -36,6 +39,11 @@ public:
                 }
                 else if (newInterval[1] < intervals[i][0])
                 {
+                    if (Write == false)
+                    {
+                        value = newInterval;
+                        result.push_back(value);
+                    }
                     reWrite = false;
                     value = intervals[i];
                     result.push_back(value);
