@@ -2,60 +2,26 @@ class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         vector<vector<int>> result;
-        vector<int> value;
-        int count = intervals.size();
-        bool reWrite = false;
-        bool Write = false;
-        if (count == 0)
+
+        for (size_t i{0}; i < intervals.size(); ++i)
         {
-            value = newInterval;
-            result.push_back(value);
-            return result;
-        }
-        else
-        {
-            for (int i = 0; i < count; i++)
+            if (newInterval[1] < intervals[i][0])
             {
-                if (intervals[i][1] < newInterval[0])
-                {
-                    value = intervals[i];
-                    result.push_back(value);
-                    Write = false;
-                    reWrite = true;
-                }
-                else if (i < count && intervals[i][0] <= newInterval[1])
-                {
-                    Write = true;
-                    reWrite = false;
-                    while (i < count && intervals[i][0] <= newInterval[1])
-                    {
-                        newInterval[0] = min(newInterval[0], intervals[i][0]);
-                        newInterval[1] = max(newInterval[1], intervals[i][1]);
-                        i++;
-                    }
-                    value = newInterval;
-                    result.push_back(value);
-                    i--;
-                }
-                else if (newInterval[1] < intervals[i][0])
-                {
-                    if (Write == false)
-                    {
-                        Write = true;
-                        value = newInterval;
-                        result.push_back(value);
-                    }
-                    reWrite = false;
-                    value = intervals[i];
-                    result.push_back(value);
-                }
+                result.push_back(move(newInterval));
+                move(begin(intervals) + i, end(intervals), back_inserter(result));
+                return result;
             }
-            if (reWrite == true)
-            {
-                value = newInterval;
-                result.push_back(value);
-            }
+            else if (intervals[i][1] < newInterval[0])
+                result.push_back(intervals[i]);
+            else
+                merge_interval(intervals[i], newInterval).swap(newInterval);
         }
+        result.push_back(newInterval);
         return result;
+    }
+
+private:
+    vector<int> merge_interval(const vector<int>& a,  const vector<int>& b) {
+        return {min(a[0], b[0]), max(a[1], b[1])};
     }
 };
