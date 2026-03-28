@@ -5,7 +5,6 @@ public:
         if (n == 1) return true;
         while (n / 4 > 0)
         {
-            n /= 4;
             if (n / 4 <= 1 && n % 4 == 0)
             {
                 result = true;
@@ -16,6 +15,7 @@ public:
                 result = false;
                 break;
             }
+            n /= 4;
         }
         return result;
     }
