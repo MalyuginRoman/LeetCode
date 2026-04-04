@@ -13,7 +13,7 @@ public:
                 val = 0;
             }
         }
-        if (val % 10 == 1)
+        if (val % 10 == 1 && val % 10 == 7)
             result = true;
         return result;
     }
