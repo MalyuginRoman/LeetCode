@@ -5,10 +5,15 @@ public:
         auto val = 0;
         while (n > 0)
         {
-            val += n % 10;
+            val += (n % 10) * (n % 10);
             n /= 10;
+            if (val > 9 && n == 0)
+            {
+                n = val;
+                val = 0;
+            }
         }
-        if (val % 10 == 0)
+        if (val % 10 == 1)
             result = true;
         return result;
     }
