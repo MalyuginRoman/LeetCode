@@ -1,20 +1,18 @@
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
-        std::vector<int> h;
-        int result = 0;
-        for (int i = 0; i <= citations.size(); i++)
-            h.push_back(0);
-        for (int i = 0; i < citations.size(); i++)
-            for (int j = 0; j <= citations.size(); j++)
+        // sort(citations.begin(),citations.end());
+        int n = citations.size();
+        int max = 0;
+        for(int i=0; i<citations.size(); i++)
+        {
+            if(citations[i] >= (n-i))
             {
-                if (citations[i] >= j)
-                    h[j]++;
-                else
-                    break;
+                int ans = n-i;
+                if(ans > max)
+                    max=ans;
             }
-        for (int i = 0; i <= citations.size(); i++)
-            if (h[i] >= i) result = i;
-        return result;
+        }
+        return max;
     }
 };
