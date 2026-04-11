@@ -21,7 +21,7 @@ public:
             }
             result += candies[i - 1];
         }
-        result += candies[0];
+        result += candies[n - 1];
         return result;
     }
 };
