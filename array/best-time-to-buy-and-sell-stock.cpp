@@ -22,7 +22,7 @@ public:
                 }
                 else
                 {
-                    if (prices[i - 1] < min)
+                    if (prices[i - 1] < mincand)
                         mincand = prices[i - 1];
                     if (max < prices[i] && imax < i)
                     {
