@@ -27,7 +27,7 @@ public:
                         max = prices[i];
                         imax = i;
                     }
-                    if (min > prices[i - 1] && (prices[i] - prices[i - 1]) <= (max - min))
+                    if (min > prices[i - 1] && (prices[i] - prices[i - 1]) >= (max - min))
                     {
                         min = prices[i - 1];
                         imin = i - 1;
