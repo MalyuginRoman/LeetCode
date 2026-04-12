@@ -4,6 +4,7 @@ public:
         vector<int> i0;
         vector<int> j0;
         for(int i = 0; i < matrix.size(); i++)
+        {
             for(int j = 0; j < matrix[i].size(); j++)
             {
                 if (matrix[i][j] == 0)
@@ -12,6 +13,9 @@ public:
                     j0.push_back(j);
                 }
             }
+            if (j0.size() == matrix[i].size()) break;
+            if (i0.size() == matrix.size()) break;
+        }
         for(int i = 0; i < matrix.size(); i++)
             for(int j = 0; j < matrix[i].size(); j++)
                 for(int t = 0; t < i0.size(); t++)
