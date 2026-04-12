@@ -15,9 +15,15 @@ public:
                     firstR = true;
             }
             if (senate[i] == R)
+            {
+                if(Ri >= 0) Di--;
                 Ri++;
+            }
             if (senate[i] == D)
+            {
+                if(Di >= 0) Ri--;
                 Di++;
+            }
         }
         if (Di > Ri || (!firstR && Di == Ri))
             result = "Dire";
