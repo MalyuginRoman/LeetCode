@@ -1,3 +1,5 @@
+#include <algorithm>
+
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
@@ -9,12 +11,14 @@ public:
             {
                 if (matrix[i][j] == 0)
                 {
-                    i0.push_back(i);
-                    j0.push_back(j);
+                    int counti = std::count(i0.begin(), i0.end(), i);
+                    if(counti == 0) i0.push_back(i);
+                    int countj = std::count(j0.begin(), j0.end(), j);
+                    if(countj == 0) j0.push_back(j);
                 }
             }
             if (j0.size() == matrix[i].size()) break;
-            if (i0.size() == matrix.size()) break;
+            //if (i0.size() == matrix.size()) break;
         }
         for(int i = 0; i < matrix.size(); i++)
             for(int j = 0; j < matrix[i].size(); j++)
