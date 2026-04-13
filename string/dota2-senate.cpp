@@ -1,34 +1,26 @@
 class Solution {
 public:
     string predictPartyVictory(string senate) {
-        char R = 'R';
-        int Ri = 0;
-        char D = 'D';
-        int Di = 0;
-        bool firstR = false;
-        string result = "isOk";
-        for (int i = 0; i < senate.size(); i++)
+        queue<int> rad, dir;
+        int n = senate.length();
+        // Add all senators to respect queue with index
+        for (int i = 0; i < n; i++)
         {
-            if (i == 0)
-            {
-                if (senate[i] == R)
-                    firstR = true;
-            }
-            if (senate[i] == R)
-            {
-                if(Ri >= 0) Di--;
-                Ri++;
-            }
-            if (senate[i] == D)
-            {
-                if(Di >= 0) Ri--;
-                Di++;
-            }
+            if (senate[i] == 'R')
+                rad.push(i);
+            else
+                dir.push(i);
         }
-        if (Di > Ri || (!firstR && Di == Ri))
-            result = "Dire";
-        else if (Di < Ri || (firstR && Di == Ri))
-            result = "Radiant";
-        return result;
+        // Use increasing n to keep track of position
+        while (!rad.empty() && !dir.empty())
+        {
+            // Only "winner" stays in their queue
+            if (rad.front() < dir.front())
+                rad.push(n++);
+            else 
+                dir.push(n++);
+            rad.pop(), dir.pop();
+        }
+        return (rad.empty()) ? ("Dire") : ("Radiant");
     }
 };
