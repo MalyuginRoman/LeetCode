@@ -2,9 +2,9 @@ class Solution {
 public:
     bool isSubsequence(string s, string t) {
         int i = 0, j = 0;
-        while (i < t.size() && j < s.size())
+        while (i < s.size() && j < t.size())
         {
-            if (t[i] == s[j])
+            if (s[i] == t[j])
                 i++;
             j++;
         }
