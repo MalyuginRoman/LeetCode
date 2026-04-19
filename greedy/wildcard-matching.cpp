@@ -1,18 +1,26 @@
 class Solution {
 public:
     bool isMatch(string s, string p) {
-        bool result = false;
-        //if (p == "*") return true;
-        //if (s.size() != p.size() && count(p.begin(),p.end(),'*') < 0) return false;
-        int count = p.size();
-        int val = -1;
-        for (int i = 0; i < count; i++)
+        return solve(s, p, s.size() - 1, p.size() - 1);
+    }
+    bool solve(string& s, string& p, int i, int j) {
+        // both string and pattern finished
+        if (i < 0 && j < 0) return true;
+        // pattern finished but string remains
+        if (i >= 0 && j < 0) return false;
+        // string finished, remaining pattern must be '*'
+        if (i < 0 && j >= 0)
         {
-            if (p[i] != s[i] || s[i] == '?')
-                val++;
-            if (p[i] == '*') return true;
+            while (j >= 0)
+                if (p[j--] != '*') return false;
+            return true;
         }
-        if (val == p.size()) result = true;
-        return result;
+        // exact match or '?'
+        if (s[i] == p[j] || p[j] == '?')
+            return solve(s, p, i - 1, j - 1);
+        // '*' matches empty or one character
+        if (p[j] == '*')
+            return solve(s, p, i - 1, j) || solve(s, p, i, j - 1);
+        return false;
     }
 };
