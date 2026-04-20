@@ -10,7 +10,7 @@ public:
                 {
                     numi.push_back(i);
                     numc.push_back(s[i]);
-                    s[i] = '.';
+                    s[i] = '~';
                 }
         for (int i = 0; i < numi.size() / 2; i++)
         {
@@ -23,7 +23,7 @@ public:
         int vali = 0;
         for (int i = 0; i < s.size(); i++)
         {
-            if (s[i] == '.')
+            if (s[i] == '~')
             {
                 result += numc[vali];
                 vali++;
