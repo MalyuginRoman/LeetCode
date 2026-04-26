@@ -1,23 +1,17 @@
 class Solution {
 public:
     bool increasingTriplet(vector<int>& nums) {
-        bool result = false;
-        int start = 0;
-        int end = nums.size() - 1;
-        for (int i = start; i <= (end - 2); i++)
+        int min1 = INT_MAX;
+        int min2 = INT_MAX;
+        for(int n : nums)
         {
-            for (int k = end; k >= (i + 2); k--)
-            {
-                for (int j = (i + 1); j <= (k - 1); j++)
-                {
-                    if (nums[i] < nums[j] && nums[j] < nums[k])
-                    {
-                        result = true;
-                        return result;
-                    }
-                }
-            }
+            if(n <= min1)
+                min1 = n;  // Update first minimum
+            else if(n <= min2)
+                min2 = n;  // Update second minimum
+            else
+                return true;  // Found a third number greater than both
         }
-        return result;
+        return false;  // No triplet found
     }
 };
