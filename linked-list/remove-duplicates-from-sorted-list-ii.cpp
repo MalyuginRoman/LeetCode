@@ -12,7 +12,8 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         // Handle edge cases where the list is empty or has only one node
-        if (head == NULL || head->next == NULL) {
+        if (head == NULL || head->next == NULL)
+        {
             return head;  // No duplicates to remove, return the list as is
         }
 
@@ -29,7 +30,8 @@ public:
         ListNode* curr = head;
 
         // Traverse through the list until the end
-        while (curr != NULL) {
+        while (curr != NULL)
+        {
             // Check if the current node has a duplicate
             if (curr->next != NULL && curr->val == curr->next->val)
             {
