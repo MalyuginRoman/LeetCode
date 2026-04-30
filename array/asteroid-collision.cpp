@@ -60,8 +60,8 @@ public:
                 if ((x1 < 0) && (x2 > 0))
                 {
                     value2.push_back(x1);
-                    value2.push_back(x2);
-                    i++;
+                    //value2.push_back(x2);
+                    //i++;
                 }
                 if (i == (count - 1))
                 {
