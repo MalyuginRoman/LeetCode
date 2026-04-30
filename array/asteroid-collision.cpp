@@ -60,8 +60,8 @@ public:
                 if ((x1 < 0) && (x2 > 0))
                 {
                     value2.push_back(x1);
-                    //value2.push_back(x2);
-                    //i++;
+                    if (x1 > 0) isP = true;
+                    if (x1 < 0) isN = true;
                 }
                 if (i == (count - 1))
                 {
