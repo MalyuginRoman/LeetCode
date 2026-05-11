@@ -3,12 +3,10 @@ public:
     int maximalSquare(vector<vector<char>>& matrix) {
         if (matrix.empty() || matrix[0].empty())
             return 0;
-        
         int rows = matrix.size();
         int cols = matrix[0].size();
         vector<vector<int>> dp(rows, vector<int>(cols, 0));
         int max_side = 0;
-        
         for (int i = 0; i < rows; ++i)
         {
             for (int j = 0; j < cols; ++j)
@@ -23,8 +21,6 @@ public:
                 }
             }
         }
-        
         return max_side * max_side;
-        
     }
 };
