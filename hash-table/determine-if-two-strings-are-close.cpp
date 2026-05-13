@@ -40,7 +40,8 @@ public:
         if (s1.size() != s2.size())
             result = false;
         for (int i = 0; i < s1.size(); i++)
-            if (count(s1.begin(), s1.end(), s1[i]) != count(s2.begin(), s2.end(), s1[i]))
+            if (count(s1.begin(), s1.end(), s1[i]) != count(s2.begin(), s2.end(), s1[i]) ||
+                count(w1.begin(), w1.end(), w1[i]) != count(w2.begin(), w2.end(), w1[i]))
             {
                 result = false;
                 break;
