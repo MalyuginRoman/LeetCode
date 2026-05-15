@@ -8,29 +8,27 @@ public:
         int val;
         for (int i = 0; i < count; i++)
         {
-            if (i == 0) val = height[i];
+            if (i == 0)
+                val = height[i];
             else if (height[i] > val)
             {
                 left[i] = height[i];
                 val = height[i];
             }
             else if (height[i] < val)
-            {
                 left[i] = val;
-            }
         }
         for (int i = count - 1; i >= 0; i--)
         {
-            if (i == count - 1) val = height[i];
+            if (i == count - 1)
+                val = height[i];
             else if (height[i] > val)
             {
                 right[i] = height[i];
                 val = height[i];
             }
             else if (height[i] < val)
-            {
                 right[i] = val;
-            }
         }
         for (int i = 0; i < count; i++)
         {
