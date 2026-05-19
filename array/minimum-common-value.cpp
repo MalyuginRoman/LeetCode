@@ -19,7 +19,7 @@ public:
                 }
             }
             j++;
-            if (j == [nums2.size()])
+            if (j == nums2.size())
                 break; //return result;
         }
         return result;
