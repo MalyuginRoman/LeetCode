@@ -16,7 +16,7 @@ public:
             value += nums[i];
             r[i] = value;
         }
-        for (int i = 0; i < count - 1; i++)
+        for (int i = 0; i < count; i++)
         {
             if (l[i] == r[i])
             {
