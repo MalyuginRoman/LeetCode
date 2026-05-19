@@ -4,7 +4,8 @@ public:
         int result = -1;
         bool isOk = false;
         int j = 0;
-        if (nums1[nums1.size() - 1] < nums2[0] || nums2[nums2.size() - 1] < nums1[0])
+        if (nums1[nums1.size() - 1] < nums2[0] ||
+            nums2[nums2.size() - 1] < nums1[0])
             return result;
         while (!isOk)
         {
