@@ -21,6 +21,8 @@ public:
                     }
                     if (j != count - 1)
                         val++;
+                    else if (j == count - 1)
+                        val = 0;
                 }
                 result[i] = val;
             }
