@@ -7,16 +7,16 @@ public:
         {
             if (i == count - 1)
                 result[i] = 0;
-            else if (temperatures[i] == temperatures[i + 1])
-                result[i] = result[i + 1] + 1;
             else
             {
                 int val = 0;
                 for (int j = i + 1; j < count; j++)
                 {
-                    //int a1 = temperatures[j];
-                    //int a2 = temperatures[i];
-                    if (temperatures[j] > temperatures[i])
+                    /*int a1 = temperatures[j];
+                    int a2 = temperatures[i];
+                    if (temperatures[i] == temperatures[j])
+                        break;
+                    else*/ if (temperatures[i] < temperatures[j])
                     {
                         val++;
                         break;
