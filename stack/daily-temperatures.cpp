@@ -7,7 +7,7 @@ public:
         {
             if (i == count - 1)
                 result[i] = 0;
-            if (temperatures[i] == temperatures[i - 1])
+            else if (temperatures[i] == temperatures[i - 1])
                 result[i] = result[i - 1];
             else
             {
