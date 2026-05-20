@@ -7,6 +7,8 @@ public:
         {
             if (i == count - 1)
                 result[i] = 0;
+            else if (temperatures[i] == temperatures[i + 1] && result[i + 1] != 0)
+                result[i] = result[i + 1] + 1;
             else
             {
                 int val = 0;
