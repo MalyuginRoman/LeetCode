@@ -14,11 +14,7 @@ public:
                 int val = 0;
                 for (int j = i + 1; j < count; j++)
                 {
-                    /*int a1 = temperatures[j];
-                    int a2 = temperatures[i];
-                    if (temperatures[i] == temperatures[j])
-                        break;
-                    else*/ if (temperatures[i] < temperatures[j])
+                    if (temperatures[i] < temperatures[j])
                     {
                         val++;
                         break;
