@@ -8,7 +8,7 @@ public:
         if (count(strArr1.begin(), strArr1.end(), to_string(num)) < 1)
             strArr1.push_back(to_string(num));
     for (int num : arr2)
-        if (count(strArr1.begin(), strArr1.end(), to_string(num)) < 1)
+        if (count(strArr2.begin(), strArr2.end(), to_string(num)) < 1)
             strArr2.push_back(to_string(num));
     
         for (const string& xStr : strArr1)
