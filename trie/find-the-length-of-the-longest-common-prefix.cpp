@@ -1,32 +1,66 @@
+class TrieNode {
+public:
+    unordered_map<char, TrieNode*> children;
+};
+
+class Trie {
+private:
+    TrieNode* root;
+
+public:
+    Trie() : root(new TrieNode()) {}
+
+    // Insert all prefixes of a number into the trie
+    void insertPrefixes(int num) {
+        string numStr = to_string(num);
+        TrieNode* current = root;
+
+        for (char digit : numStr)
+        {
+            if (current->children.find(digit) == current->children.end())
+                current->children[digit] = new TrieNode();
+            current = current->children[digit];
+        }
+    }
+
+    // Find the longest prefix of 'num' that exists in the trie
+    int findLongestPrefix(int num)
+    {
+        string numStr = to_string(num);
+        TrieNode* current = root;
+        int length = 0;
+
+        for (char digit : numStr)
+        {
+            if (current->children.find(digit) != current->children.end())
+            {
+                length++;
+                current = current->children[digit];
+            }
+            else
+                break; // No matching prefix beyond this point
+        }
+        return length;
+    }
+};
+
 class Solution {
 public:
     int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
-    int result = 0;
-    vector<string> strArr1;
-    vector<string> strArr2;
+    Trie trie;
+    int maxLength = 0;
+
+    // Step 1: Insert all prefixes from arr1 into the trie
     for (int num : arr1)
-        if (count(strArr1.begin(), strArr1.end(), to_string(num)) < 1)
-            strArr1.push_back(to_string(num));
+        trie.insertPrefixes(num);
+
+    // Step 2: For each number in arr2, find the longest common prefix in the trie
     for (int num : arr2)
-        if (count(strArr2.begin(), strArr2.end(), to_string(num)) < 1)
-            strArr2.push_back(to_string(num));
-    
-        for (const string& xStr : strArr1)
-        {
-            for (const string& yStr : strArr2)
-            {
-                int value = 0;
-                int count = min(xStr.length(), yStr.length());
-                for (int i = 0; i < count; ++i)
-                {
-                    if (xStr[i] == yStr[i])
-                        value++;
-                    else
-                        break; // Stop at the first mismatch
-                }
-                result = max(result, value);
-            }
-        }
-    return result; 
+    {
+        int currentLength = trie.findLongestPrefix(num);
+        maxLength = max(maxLength, currentLength);
+    }
+
+    return maxLength;
     }
 };
