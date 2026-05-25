@@ -5,8 +5,8 @@ public:
         int val = 0;
         bool result = false;
         int count = arr.size();
-        if (count < 2) return result;
-        if (arr[1] - arr[0] == arr[2] - arr[1])
+        if (count <= 1) return result;
+        if (arr[1] - arr[0] == arr[count - 1] - arr[count - 2])
             result = true;
         return result;
     }
