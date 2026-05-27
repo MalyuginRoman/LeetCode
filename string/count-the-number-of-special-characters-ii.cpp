@@ -21,7 +21,7 @@ public:
                     bolA[j] = true;
                     break;
                 }
-                else if (val == valB)
+                else if (val == valB && bolB[j] == false)
                 {
                     numB[j] = i;
                     bolB[j] = true;
