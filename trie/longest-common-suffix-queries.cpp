@@ -71,16 +71,16 @@ public:
 
         vector<int> ans;
         // Process each query
-        vector<string> qq;
+        //vector<string> qq;
         for (const string& q : wordsQuery)
         {
-            if (count(qq.begin(), qq.end(), q) < 1)
-            {
-                qq.push_back(q);
+            //if (count(qq.begin(), qq.end(), q) < 1)
+            //{
+                //qq.push_back(q);
                 string revQ = reverseStr(q);
                 int bestIdx = search(revQ);
                 ans.push_back(bestIdx);
-            }
+            //}
         }
 
         return ans;
