@@ -63,17 +63,24 @@ public:
         root = new TrieNode();
 
         // Insert all reversed words from wordsContainer
-        for (int i = 0; i < wordsContainer.size(); ++i) {
+        for (int i = 0; i < wordsContainer.size(); ++i)
+        {
             string revWord = reverseStr(wordsContainer[i]);
             insert(revWord, i, wordsContainer[i].length());
         }
 
         vector<int> ans;
         // Process each query
-        for (const string& q : wordsQuery) {
-            string revQ = reverseStr(q);
-            int bestIdx = search(revQ);
-            ans.push_back(bestIdx);
+        vector<string> qq;
+        for (const string& q : wordsQuery)
+        {
+            if (count(qq.begin(), qq.end(), q) < 1)
+            {
+                qq.push_back(q);
+                string revQ = reverseStr(q);
+                int bestIdx = search(revQ);
+                ans.push_back(bestIdx);
+            }
         }
 
         return ans;
