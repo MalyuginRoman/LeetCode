@@ -1,88 +1,78 @@
 class Solution {
-private:
+public:
     struct TrieNode {
-        TrieNode* children[26] = {};
-        int bestIndex = -1;      // index of best string (earliest if tied)
-        int minLength = 1e9;  // min length of strings going through this node
+        int idx;
+        TrieNode* child[26];
+
+        ~TrieNode() {
+            for (int i = 0; i < 26; i++) {
+                if (child[i] != nullptr) {
+                    delete child[i];
+                    child[i] = nullptr;
+                }
+            }
+        }
     };
 
-    TrieNode* root;
+    TrieNode* getNode(int i) {
+        TrieNode* newNode = new TrieNode();
+        newNode->idx = i;
 
-    // Reverse a string
-    string reverseStr(const string& s) {
-        string rev = s;
-        reverse(rev.begin(), rev.end());
-        return rev;
+        for (int k = 0; k < 26; k++) {
+            newNode->child[k] = NULL;
+        }
+        return newNode;
     }
 
-    // Insert a reversed word into the trie
-    void insert(const string& word, int index, int length) {
-        TrieNode* node = root;
-        
-        // Update root (empty prefix)
-        if (length < node->minLength) {
-            node->minLength = length;
-            node->bestIndex = index;
-        } else if (length == node->minLength && index < node->bestIndex) {
-            node->bestIndex = index;
-        }
+    void insert(TrieNode* root, vector<string>& s, int id) {
+        int n = s[id].size();
+        TrieNode* crawl = root;
+        for (int i = n - 1; i >= 0; i--) {
+            int index = s[id][i] - 'a';
 
-        for (char c : word) {
-            int idx = c - 'a';
-            if (!node->children[idx]) {
-                node->children[idx] = new TrieNode();
+            if (crawl->child[index] == NULL) {
+                crawl->child[index] = getNode(id);
             }
-            node = node->children[idx];
 
-            // Update best index and min length for current node
-            if (length < node->minLength) {
-                node->minLength = length;
-                node->bestIndex = index;
-            } else if (length == node->minLength && index < node->bestIndex) {
-                node->bestIndex = index;
+            crawl = crawl->child[index];
+            if (s[crawl->idx].size() > n) {
+                crawl->idx = id;
             }
         }
     }
+    int search(string& s, TrieNode* root) {
+        int res = root->idx;
+        int n = s.size();
+        TrieNode* crawl = root;
+        for (int i = n - 1; i >= 0; i--) {
+            int char_idx = s[i] - 'a';
 
-    // Search for longest prefix match of reversed query
-    int search(const string& query) {
-        TrieNode* node = root;
-        int result = node->bestIndex;  // fallback: empty suffix match
-
-        for (char c : query) {
-            int idx = c - 'a';
-            if (!node->children[idx]) break;
-            node = node->children[idx];
-            result = node->bestIndex;  // update to best at current depth
+            crawl = crawl->child[char_idx];
+            if (crawl == NULL) {
+                return res;
+            }
+            res = crawl->idx;
         }
-        return result;
+        return res;
     }
+    vector<int> stringIndices(vector<string>& s, vector<string>& q) {
 
-public:
-    vector<int> stringIndices(vector<string>& wordsContainer, vector<string>& wordsQuery) {
-        root = new TrieNode();
+        TrieNode* root = getNode(0);
 
-        // Insert all reversed words from wordsContainer
-        for (int i = 0; i < wordsContainer.size(); ++i)
-        {
-            string revWord = reverseStr(wordsContainer[i]);
-            insert(revWord, i, wordsContainer[i].length());
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i].size() < s[root->idx].size()) {
+                root->idx = i;
+            }
+
+            insert(root, s, i);
         }
 
         vector<int> ans;
-        // Process each query
-        //vector<string> qq;
-        for (const string& q : wordsQuery)
-        {
-            //if (count(qq.begin(), qq.end(), q) < 1)
-            //{
-                //qq.push_back(q);
-                string revQ = reverseStr(q);
-                int bestIdx = search(revQ);
-                ans.push_back(bestIdx);
-            //}
-        }
 
+        for (auto& it : q) {
+            ans.push_back(search(it, root));
+        }
+        delete root;
         return ans;
     }
 };
