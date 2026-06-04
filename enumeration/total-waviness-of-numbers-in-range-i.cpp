@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool isOk(int n1, int n2, int n3)
+    {
+        if ((n1 < n2 && n2 > n3) || (n1 > n2 && n2 < n3))
+            return true;
+        else
+            return false;
+    }
+    int totalWaviness(int num1, int num2) {
+        int result = 0;
+        int n1, n2, n3, n4;
+        for (int i = num1; i <= num2; i++)
+        {
+            if (i / 1000 > 0)
+            {
+                n1 = i / 1000;
+                n2 = (i % 1000) / 100;
+                n3 = ((i % 1000) % 100) / 10;
+                n4 = ((i % 1000) % 100) % 10;
+                if (isOk(n1, n2, n3))
+                    result++;
+                if (isOk(n2, n3, n4))
+                    result++;
+            }
+            else if (i / 100 > 0)
+            {
+                n1 = i / 100;
+                n2 = (i % 100) / 10;
+                n3 = (i % 100) % 10;
+                if (isOk(n1, n2, n3))
+                    result++;
+            }
+        }
+        return result;
+    }
+};
