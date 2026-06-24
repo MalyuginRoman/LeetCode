@@ -1,34 +1,66 @@
-constexpr int MOD = 1'000'000'007;
-
 class Solution {
+private:
+    static constexpr long long MOD = 1'000'000'007;
+    using Matrix = vector<vector<long long>>;
+
+    Matrix mul(const Matrix& a, const Matrix& b) {
+        int n = a.size();
+        int m = b[0].size();
+        Matrix res(n, vector<long long>(m, 0));
+
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < a[0].size(); k++) {
+                long long r = a[i][k];
+                if (r == 0) {
+                    continue;
+                }
+                for (int j = 0; j < m; j++) {
+                    res[i][j] = (res[i][j] + r * b[k][j]) % MOD;
+                }
+            }
+        }
+        return res;
+    }
+
+    Matrix powMul(Matrix base, long long exp, Matrix res) {
+        while (exp > 0) {
+            if (exp & 1) {
+                res = mul(res, base);
+            }
+            base = mul(base, base);
+            exp >>= 1;
+        }
+        return res;
+    }
+
 public:
     int zigZagArrays(int n, int l, int r) {
         int m = r - l + 1;
-        vector<int> dp0(m, 0);
-        vector<int> dp1(m, 0);
-        vector<int> sum0(m + 1, 0);
-        vector<int> sum1(m + 1, 0);
+        if (n == 1) {
+            return m;
+        }
+
+        int size = 2 * m;
+        Matrix u(size, vector<long long>(size, 0));
 
         for (int i = 0; i < m; i++) {
-            dp0[i] = dp1[i] = 1;
-        }
-
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                sum0[j + 1] = (sum0[j] + dp0[j]) % MOD;
-                sum1[j + 1] = (sum1[j] + dp1[j]) % MOD;
+            for (int j = 0; j < i; j++) {
+                u[i][j + m] = 1;
             }
-
-            for (int j = 0; j < m; j++) {
-                dp0[j] = (sum1[m] - sum1[j + 1] + MOD) % MOD;
-                dp1[j] = sum0[j];
+            for (int j = i + 1; j < m; j++) {
+                u[i + m][j] = 1;
             }
         }
 
-        auto op = [](int acc, int x) { return (acc + x) % MOD; };
-        auto ans0 = std::reduce(dp0.begin(), dp0.end(), 0, op);
-        auto ans1 = std::reduce(dp1.begin(), dp1.end(), 0, op);
+        Matrix dp(1, vector<long long>(size, 1));
 
-        return (ans0 + ans1) % MOD;
+        dp = powMul(std::move(u), n - 1, std::move(dp));
+
+        long long ans = 0;
+        for (int i = 0; i < size; i++) {
+            ans = (ans + dp[0][i]) % MOD;
+        }
+
+        return ans;
     }
 };
