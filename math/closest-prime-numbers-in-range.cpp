@@ -33,9 +33,9 @@ public:
                         result[0] = cur[i];
                         result[1] = cur[i + 1];
                     }
+                if (result[1] - result[0] <= 2)
+                    break;
             }
-            if (result[1] - result[0] == 2)
-                break;
         }
         return result;
     }
