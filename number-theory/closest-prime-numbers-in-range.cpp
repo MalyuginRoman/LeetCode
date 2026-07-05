@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
         vector<int> result {-1, -1};
-        vector<int> cur {-1, -1};
-        int val = 0;
+        vector<int> cur;
+        bool isFull = false;
         for (int i = left; i <= right; i++)
         {
             bool isOk = true;
@@ -16,15 +16,21 @@ public:
                 }
             }
             if (isOk)
-            {
-                cur[val] = i;
-                val++;
-            }
-            if (val == 2)
-            {
-                result = cur;
-                break;
-            }
+                cur.push_back(i);
+            if (cur.size() == 2)
+                isFull = true;
+        }
+        if (isFull)
+        {
+            result[0] = cur[0];
+            result[1] = cur[1];
+            int count = cur.size();
+            for (int i = 1; i < (count - 1); i++)
+                if (cur[i + 1] - cur[i] < result[1] - result[0])
+                {
+                    result[0] = cur[i];
+                    result[1] = cur[i + 1];
+                }
         }
         return result;
     }
