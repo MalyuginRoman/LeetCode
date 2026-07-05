@@ -2,12 +2,6 @@ class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
         vector<int> result {-1, -1};
-        /*if (left == 1 && right == 2)
-        {
-            result[0] = 1;
-            result[1] = 2;
-            return result;
-        }*/
         vector<int> cur;
         bool isFull = false;
         for (int i = left; i <= right; i++)
@@ -22,6 +16,8 @@ public:
                 }
                 isOk = true;
             }
+            if (i == 2)
+                isOk = true;
             if (isOk)
                 cur.push_back(i);
             if (cur.size() == 2)
