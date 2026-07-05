@@ -22,18 +22,20 @@ public:
                 cur.push_back(i);
             if (cur.size() == 2)
                 isFull = true;
-        }
-        if (isFull)
-        {
-            result[0] = cur[0];
-            result[1] = cur[1];
-            int count = cur.size();
-            for (int i = 1; i < (count - 1); i++)
-                if (cur[i + 1] - cur[i] < result[1] - result[0])
-                {
-                    result[0] = cur[i];
-                    result[1] = cur[i + 1];
-                }
+            if (isFull)
+            {
+                result[0] = cur[0];
+                result[1] = cur[1];
+                int count = cur.size();
+                for (int i = 1; i < (count - 1); i++)
+                    if (cur[i + 1] - cur[i] < result[1] - result[0])
+                    {
+                        result[0] = cur[i];
+                        result[1] = cur[i + 1];
+                    }
+            }
+            if (result[1] - result[0] == 2)
+                break;
         }
         return result;
     }
