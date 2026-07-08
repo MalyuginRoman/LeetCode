@@ -15,6 +15,7 @@ public:
                     mX = grid[i][j];
             }
             result += mX;
+            mX = 0;
         }
         for (int j = 0; j < count; j++)
         {
@@ -22,6 +23,7 @@ public:
                 if (mY < grid[i][j])
                     mY = grid[i][j];
             result += mY;
+            mY = 0;
         }
         return result;
     }
