@@ -5,7 +5,10 @@ public:
         bool isCalc = false;
         while (!isCalc)
         {
-            int val = n >= 100 ? n/100 * (n%100)/10 * (n%100)%10 : n >= 10 ? n/10 * n%10 : n%10;
+            int v1 = n/100;
+            int v2 = (n%100)/10;
+            int v3 = (n%100)%10;
+            int val = n >= 100 ? v1 * v2 * v3 : n >= 10 ? v2 * v3 : v3;
             if (val%t == 0)
             {
                 result = n;
