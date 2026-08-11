@@ -9,7 +9,7 @@ public:
             else
                 break;
         }
-        while (count(nums.begin(), nums.end(), max_sum) == 1)
+        while (count(nums.begin(), nums.end(), max_sum) > 0)
             max_sum ++;
         return max_sum;
     }
