@@ -12,6 +12,7 @@ public:
                 break;
         }
         int result = max_val > max_sum ? (max_val + 1) : max_sum;
+        if (max_val == max_sum) result++;
         return result;
     }
 };
