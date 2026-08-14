@@ -1,88 +1,23 @@
 class Solution {
 public:
     int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {
-        // Area of first rectangle
-        int area1 = (ax2 - ax1) * (ay2 - ay1);
-        // Area of second rectangle
-        int area2 = (bx2 - bx1) * (by2 - by1);
+    // Площадь первого прямоугольника
+    long long areaA = 1LL * (ax2 - ax1) * (ay2 - ay1);
 
-        // Calculating intersecting area
-        int bottomLeftX = max(ax1, bx1);
-        int bottomLeftY = max(ay1, by1);
+    // Площадь второго прямоугольника
+    long long areaB = 1LL * (bx2 - bx1) * (by2 - by1);
 
-        int topRightX = min(ax2, bx2);
-        int topRightY = min(ay2, by2);
+    // Координаты пересечения
+    int ox1 = std::max(ax1, bx1);
+    int oy1 = std::max(ay1, by1);
+    int ox2 = std::min(ax2, bx2);
+    int oy2 = std::min(ay2, by2);
 
-        int width = topRightX - bottomLeftX;
-        int height = topRightY - bottomLeftY;
-        int intersectingArea = height * width;
+    long long overlap = 0;
+    if (ox1 < ox2 && oy1 < oy2) {
+        overlap = 1LL * (ox2 - ox1) * (oy2 - oy1);
+    }
 
-        if(width <= 0 || height <= 0)
-            intersectingArea = 0;
-
-        return area1 + area2 - intersectingArea;
-        /*int result = 0;
-        int S1 = abs(ax2-ax1)*abs(ay2-ay1);
-        int S2 = abs(bx2-bx1)*abs(by2-by1);
-        int S3 = 0;
-        if (ax1 == bx1 && ay1 == by1 && ax2 == bx2 && ay2 == by2 &&    //equal
-            S1 != 0 && S2 != 0) {
-            S2 = 0;
-            S3 = 0; }
-        else if (ax1 < bx1 && ay1 > by1 && ax2 > bx2 && ay2 < by2 &&    //X1
-            S1 != 0 && S2 != 0)
-            S3 = abs(bx2-bx1)*abs(ay2-ay1);
-        else if (ax1 > bx1 && ay1 < by1 && ax2 < bx2 && ay2 > by2 &&    //X2
-            S1 != 0 && S2 != 0)
-            S3 = abs(ax2-ax1)*abs(by2-by1);
-        else if ((ax2 >= bx1 && ax2 <= bx2) && (ax1 >= bx1 && ax1 <= bx2) &&    //in1
-            (ay2 >= by1 && ay2 <= by2) && (ay1 >= by1 && ay1 <= by2) && S1 != 0 && S2 != 0) {
-            S1 = 0;
-            S3 = 0; }
-        else if ((bx2 >= ax1 && bx2 <= ax2) && (bx1 >= ax1 && bx1 <= ax2) &&    //in2
-            (by2 >= ay1 && by2 <= ay2) && (by1 >= ay1 && by1 <= ay2) && S1 != 0 && S2 != 0) {
-            S2 = 0;
-            S3 = 0; }
-        else if (ax1 <= bx1 && ax2 >= bx2 && (ay1 > by1 && ay1 < by2) &&      // v1
-            (ay2 > by2) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-bx1)*abs(ay1-by2);
-        else if (bx1 <= ax1 && bx2 >= ax2 && (ay1 > by1 && ay1 < by2) &&      // v2
-            (ay2 > by2) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-ax1)*abs(ay1-by2);
-        else if (ax1 < bx1 && ax2 > bx2 && (ay1 >= by1 && ay1 <= by2) &&      // v3
-            (ay2 < by2 && ay2 > by1) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-bx1)*abs(ay2-by1);
-        else if (ay1 <= by1 && ay2 >= by2 && (bx1 > ax1 && bx1 < ax2) &&      // r1
-            (ax1 < bx1) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-bx1)*abs(by2-by1);
-        else if (ay1 >= by1 && ay2 <= by2 && (bx1 > ax1 && bx1 < ax2) &&      // r2
-            (ax1 < bx1) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-bx1)*abs(ay2-ay1);
-        else if (ax1 <= bx1 && ax2 >= bx2 && (ay2 > by1 && ay2 < by2) &&      // n1
-            (ay1 < by1) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-bx1)*abs(ay2-by1);
-        else if (ax1 >= bx1 && ax2 <= bx2 && (ay2 > by1 && ay2 < by2) &&      // n2
-            (ay1 < by1) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-ax1)*abs(ay2-by1);
-        else if (ay1 <= by1 && ay2 >= by2 && (ax1 > bx1 && ax1 < bx2) &&      // l1
-            (ax2 > bx2) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-ax1)*abs(by2-by1);
-        else if (ay1 >= by1 && ay2 <= by2 && (ax1 > bx1 && ax1 < bx2) &&      // l2
-            (ax2 > bx2) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-ax1)*abs(ay2-ay1);
-        else if ((ax2 > bx1 && ax2 < bx2) && (by2 > ay1 && by2 < ay2) &&    // vl
-            (bx1 > ax1) && (by1 < ay1) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-bx1)*abs(by2-ay1);
-        else if ((ax2 > bx1 && ax2 < bx2) && (by1 > ay1 && by1 < ay2) &&    // nl
-            (bx1 > ax1) && (by2 > ay2) && S1 != 0 && S2 != 0)
-            S3 = abs(ax2-bx1)*abs(ay2-by1);
-        else if ((ax1 > bx1 && ax1 < bx2) && (by1 > ay1 && by1 < ay2) &&    // nr
-            (bx1 < ax1) && (by2 > ay2) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-ax1)*abs(ay2-by1);
-        else if ((ax1 > bx1 && ax1 < bx2) && (ay1 > by1 && ay1 < by2) &&    // vr
-            (bx2 < ax2) && (by1 < ay1) && S1 != 0 && S2 != 0)
-            S3 = abs(bx2-ax1)*abs(ay1-by2);
-        result = S1 + S2 - S3;
-        return result;*/
+    return areaA + areaB - overlap;
     }
 };
