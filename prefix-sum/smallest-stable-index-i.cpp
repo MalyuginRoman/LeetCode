@@ -5,7 +5,7 @@ public:
         int t = 0;
         for (int i = 0; i < nums.size(); i++)
         {
-            int min_el = 101, max_el = 0;
+            int min_el = 1000000001, max_el = 0;
             for (int j = 0; j < nums.size(); j++)
             {
                 if (j <= t && nums[j] > max_el)
