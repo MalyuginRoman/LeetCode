@@ -14,6 +14,9 @@ public:
         val = 1.E+12;
         if (n >= val)
             result += (n - (val - 1));
+        val = 1.E+15;
+        if (n >= val)
+            result += (n - (val - 1));
         return result;
     }
 };
